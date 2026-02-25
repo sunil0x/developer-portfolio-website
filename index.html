@@ -1,159 +1,284 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>portfolio website</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="contact.css">
-    <link rel="stylesheet" href="hamburger.css">
-    <link rel="stylesheet" href="about.css">
-    <link rel="stylesheet" href="home.css">
-    <link rel="stylesheet" href="portfolio.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sunil Paudel — Portfolio</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&display=swap" rel="stylesheet" />
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- External Stylesheets -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="home.css" />
+  <link rel="stylesheet" href="about.css" />
+  <link rel="stylesheet" href="portfolio.css" />
+  <link rel="stylesheet" href="contact.css" />
+  <link rel="stylesheet" href="hamburger.css" />
 </head>
 <body>
 
+<nav>
+  <div class="container nav-container">
+    <a href="#hero" class="logo">Sunil<span>.</span></a>
+    
+    <!-- Hamburger Toggle -->
+    <button class="menu-toggle" id="mobile-menu-btn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
 
-    <!-- hamburger icon-->
-     <div class="hamburger">
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-     </div>
+    <ul class="nav-links" id="nav-menu">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#certifications">Certificates</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    
+    <div class="nav-right">
+      <a href="#" class="btn-cv-nav">Resume / CV</a>
+    </div>
+  </div>
+</nav>
 
+<div class="container">
+  <!-- HOME SECTION -->
+  <section id="hero">
+    <div class="hero-left">
+      <span class="hero-greeting">Hi, I am</span>
+      <h1 class="hero-name">Sunil Paudel</h1>
+      <p class="hero-role">An Aspiring Marketing Analyst and Creative Web Developer building high-performance digital experiences.</p>
+      
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/sunil-paudel-1a4a08327/" target="_blank" class="social-icon" title="LinkedIn">
+          <i data-lucide="linkedin"></i>
+        </a>
+        <a href="https://github.com/sunil0x" target="_blank" class="social-icon" title="GitHub">
+          <i data-lucide="github"></i>
+        </a>
+        <a href="https://instagram.com/YOUR_PROFILE" target="_blank" class="social-icon" title="Instagram">
+          <i data-lucide="instagram"></i>
+        </a>
+        <a href="https://facebook.com/YOUR_PROFILE" target="_blank" class="social-icon" title="Facebook">
+          <i data-lucide="facebook"></i>
+        </a>
+      </div>
 
-    <!-- navbar-->
-     <nav id="nav-bar">
-        <a href="#hero">Home</a>
-        <a href="#about">About</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#contact">Contact</a>
-     </nav>
-
-     <!-- Home-->
-      <section id="hero">
-        <div class="hero-container">
-            <div class="hero-text">
-        <h1>Hello, I'm Sunil</h1>
-        <p>Web Developer</p>
-        <div class="hero-socials">
-        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://www.instagram.com/sunnil_013/" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.linkedin.com/in/sunil-paudel-1a4a08327" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-        <a href="https://github.com/sunilpaudel013" target="_blank"><i class="fab fa-github"></i></a>
+      <div class="hero-btns">
+        <a href="#projects" class="btn-solid">Explore Work</a>
+        <a href="#contact" class="btn-solid btn-outline">Let's Chat</a>
+      </div>
+    </div>
+    
+    <div class="hero-right">
+      <div class="hero-img-box">
+        <div class="placeholder-img">
+          <img src = 'images/profile-pic.png' class="placeholder-img">
         </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- ABOUT SECTION -->
+  <section id="about">
+    <div class="reveal">
+      <span class="sec-label">Behind the scenes</span>
+      <h2 class="sec-title">About Me</h2>
+      <div class="about-content">
+        <div class="about-img-square">
+           <img src = 'images/about-pic.png' class="placeholder-img">
         </div>
-        <div class="hero-image">
-        <img src="images/profile-pic.png" class="hero-image">
-        </div>
-        </div>
-      </section>
-
-
-      <!-- about section-->
-       <section id="about">
-    <h2>About</h2>
-    <div class="about-container">
-        <img src="images/about-pic.png" alt='profile'>
 
         <div class="about-text">
-            <h3>Web developer</h3>
-            <p>
-                I am a beginner web developer learning HTML, CSS,
-                and JavaScript. I enjoy building clean and simple websites.
-            </p>
-
-            <div class="personal-info">
-                <ul>
-                    <li><strong>&gt; Birthday:</strong> 23 Dec 2005</li>
-                    <li><strong>&gt; Age:</strong> 22</li>
-                    <li><strong>&gt; Phone:</strong> +977 9844368013</li>
-                    <li><strong>&gt; Email:</strong> sunilpaudel@gmail.com</li>
-                    <li><strong>&gt; Address:</strong> Kathmandu, Nepal</li>
-                    <li><strong>&gt; Degree:</strong> Bachelor running</li>
-                </ul>
-            </div>
+          <p>I am a versatile professional blending the analytical rigor of <strong>Marketing Analysis</strong> with the creative execution of <strong>Web Development</strong>. Based in Nepal, I focus on bridging the gap between data-driven insights and user-centric digital products.</p>
+          <p>My unique value lies in understanding not just how to build a website, but how to ensure it converts and aligns with business goals.</p>
+          
+          <div class="aspiration-box">
+            <h4>Vision 2030</h4>
+            <p>I aim to evolve into a Senior Lead Analyst, pioneering integrated marketing technologies that help global brands make smarter, data-first decisions.</p>
+          </div>
         </div>
+        
+        <div class="about-skills">
+          <div class="skill-category">
+            <h4>Analytical Stack</h4>
+            <div class="skill-tags">
+              <span class="skill-tag">Market Research</span>
+              <span class="skill-tag">Data Visualization</span>
+              <span class="skill-tag">Google Analytics</span>
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">Excel</span>
+              <span class="skill-tag">Power BI</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h4>Technical Development</h4>
+            <div class="skill-tags">
+              <span class="skill-tag">React.js</span>
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">Tailwind CSS</span>
+              <span class="skill-tag">Node.js</span>
+              <span class="skill-tag">UI/UX</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO SECTION -->
+   <section id="projects"> 
+  <div class="reveal">
+    <span class="sec-label">My Work</span>
+    <h2 class="sec-title">Features Project</h2>
+    
+    <div class="project-card">
+      <div class="project-img">
+        <img src="img/chess_pygame.png" alt="Chess Game">
+      </div>
+      <div class="project-info">
+        <span class="project-tag">Python | Pygame</span>
+        <h3>Chess Game — Pygame</h3>
+        <p style="font-style: italic; font-size: 0.8rem; margin-bottom: 10px; color: var(--text-dim);">3rd Semester Academic Project</p>
+        <p>A fully functional two-player chess game built with Python and Pygame. Features include valid move enforcement and check/checkmate detection implemented from scratch.</p>
+        <div class="tech-stack" style="display: flex; gap: 10px; margin-bottom: 15px;">
+          <span class="tech-pill">Python</span>
+          <span class="tech-pill">Pygame</span>
+          <span class="tech-pill">OOP</span>
+        </div>
+        <a href="#" class="project-link">View Project →</a>
+      </div>
     </div>
 
-</section>
-    <!-- Projects -->
-    <section id="portfolio">
-    <h2>Portfolio</h2>
-
-        <div class="project-list">
-            <div class="project-card">
-                <img src="img/weather_app.png" alt="Project 1">
-                <h3>Weather app</h3>
-                <p>A Weather App displays real-time weather information for a selected location. 
-                    It fetches data from a weather API to show details like temperature, humidity, 
-                    and weather conditions. The app helps users quickly check current and upcoming
-                     weather in a simple and user-friendly interface.</p>
-            </div>
-
-            <div class="project-card">
-                <img src="img/currency_converter.png" alt="Project 2">
-                <h3>Currency converter</h3>
-                <p>A Currency Converter is a web app that converts 
-                    an amount from one currency to another in real-time. 
-                    It fetches exchange rates from an API and provides a simple interface to calculate conversions quickly.</p>
-            </div>
-
-            <div class="project-card">
-                <img src="img/chess_pygame.png" alt="Project 3">
-                <h3>Chess Pygame</h3>
-                <p>A 3rd-semester project developing a chess game using Python and Pygame, featuring a graphical board, valid moves, and check/checkmate detection for two-player gameplay.</p>
-            </div>
-
-            <div class="project-card">
-                <img src="img/yumio.png" alt="Project 4">
-                <h3>YUMIO - Food Delivery Platform</h3>
-                <p>Yumio is a comprehensive, production-ready food delivery
-                 platform built with modern web technologies. 
-                 The application enables users to order food items, see recipe (if we want to make ourself), make secure payments, and track their orders in real-time. The platform includes a customer-facing frontend application, an admin management panel, and a robust backend. </p>
-            </div>
+    <div class="project-card">
+      <div class="project-img">
+        <img src="img/yumio.png" alt="Yumio Food Delivery App">
+      </div>
+      <div class="project-info">
+        <span class="project-tag"> Full-Stack Web Application</span>
+        <h3>Yumio — Food Delivery App</h3>
+        <p style="font-style: italic; font-size: 0.8rem; margin-bottom: 10px; color: var(--text-dim);">4th Semester DBMS PERN Stack Project</p>
+        <p>A food ordering platform where users can browse, order their favourite meals, and even get recipes. Built with the <strong>PERN</strong> stack (PostgreSQL, Express, React, Node.js).</p>
+        <div class="tech-stack" style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 15px;">
+          <span class="tech-pill">JavaScript</span>
+          <span class="tech-pill">React</span>
+          <span class="tech-pill">Node.js</span>
+          <span class="tech-pill">Express</span>
+          <span class="tech-pill">PostgreSQL</span>
         </div>
-    </section>
+        <a href="https://yumio-frontend-7qtx.onrender.com/" class="project-link">View Demo →</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-img">
+        <img src="img/nepse_analysis.png" alt="NEPSE Data Analysis">
+      </div>
+      <div class="project-info">
+        <span class="project-tag">Data Analysis</span>
+        <h3>NEPSE Data Analysis</h3>
+        <p style="font-style: italic; font-size: 0.8rem; margin-bottom: 10px; color: var(--text-dim);">4th Semester Advanced Python Project</p>
+        <p>An exploratory data analysis project focused on the Nepal Stock Exchange (NEPSE). Uses Python's data ecosystem to surface insights and patterns from market data.</p>
+        <div class="tech-stack" style="display: flex; gap: 10px; margin-bottom: 15px;">
+          <span class="tech-pill">Pandas</span>
+          <span class="tech-pill">Matplotlib</span>
+          <span class="tech-pill">Jupyter</span>
+        </div>
+        <a href="#" class="project-link">View Insights →</a>
+      </div>
+    </div>
+
+  </div> </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications">
+  <div class="reveal">
+    <span class="sec-label">My Credentials</span>
+    <h2 class="sec-title">Certifications</h2>
+    <div class="cert-grid">
+      
+      <div class="cert-card">
+          <p class="cert-year">2026</p>
+          <a href="YOUR_DATACAMP_LINK_HERE" target="_blank" class="cert-link">
+            <h4>Associate Data Analyst in SQL</h4>
+          </a>
+          <p class="cert-desc">Datacamp Certificate of Accomplishment covering advanced querying and data manipulation.</p>
+      </div>
+
+      <div class="cert-card">
+          <p class="cert-year">2026</p>
+          <a href="YOUR_SIMPLILEARN_LINK_HERE" target="_blank" class="cert-link">
+            <h4>Data Analyst 101</h4>
+          </a>
+          <p class="cert-desc">Simplilearn Certificate  focusing on Excel-based data analysis.</p>
+      </div>
 
 
-    <!-- Contact -->
-    <section id="contact">
-        <h2>Contact Me</h2>
-        
-        <form action="#" class="contact-form">
+    </div>
+  </div>
+</section>
 
-            <label for="inquiry">Inquiry type</label>
-            <select id="inquiry" required>
-                <option value="general">General Question</option>
-                <option value="collab">Collaboration / Partnership</option>
-                <option value="project">New Project / Hire Me</option>
-                <option value="other">Support/option>
+
+
+  <!-- CONTACT SECTION -->
+  <section id="contact">
+    <div class="reveal">
+      <span class="sec-label">Contact</span>
+      <h2 class="sec-title">Get in Touch</h2>
+      <div class="contact-container">
+        <div class="contact-info">
+          <h3>Let's talk about your project</h3>
+          <p>Fill out the form and I'll get back to you within 24 hours.</p>
+          <div class="contact-method">
+            <div class="contact-icon">@</div>
+            <div>
+              <div class="method-label">Email</div>
+              <div class="method-value">sunilpaudel013@gmail.com</div>
+            </div>
+          </div>
+          <div class="contact-method">
+            <div class="contact-icon">L</div>
+            <div>
+              <div class="method-label">Location</div>
+              <div class="method-value">Kathmandu, Nepal</div>
+            </div>
+          </div>
+        </div>
+        <form class="contact-form">
+          <div class="form-row">
+            <div class="form-group"><label>Full Name</label><input type="text" placeholder="Your Name" required /></div>
+            <div class="form-group"><label>Email Address</label><input type="email" placeholder="email@example.com" required /></div>
+          </div>
+          <div class="form-group">
+            <label>Inquiry Type</label>
+            <select required>
+              <option value="" disabled selected>Select an option</option>
+              <option value="project">New Project</option>
+              <option value="hiring">Hiring / Full-time</option>
+              <option value="collaboration">Collaboration</option>
             </select>
-
-            <!-- fullname-->
-            <label for="fullName">Full Name</label>
-            <input type="text" placeholder="Enter full name" required>
-
-            <!-- gmail-->
-             <label for="email">Gmail</label>
-             <input type="email" id="email" placeholder="Enter email id " required>
-
-
-             <!-- message-->
-              <label for="message">Message</label>
-        <textarea id="message" rows="5" placeholder="Write your message..." required></textarea>
-
-            <!-- submit button-->
-             <button type="submit">Submit</button>
+          </div>
+          <div class="form-group"><label>Message</label><textarea rows="5" placeholder="Tell me more..."></textarea></div>
+          <button type="submit" class="btn-solid">Send Message</button>
         </form>
-    </section>
+      </div>
+    </div>
+  </section>
+</div>
 
+<footer class="footer">
+  <p>&copy; 2025 Sunil Paudel. Built with Passion.</p>
+</footer>
 
-    <script src="script.js"></script>
+<!-- External Script -->
+<script src="script.js"></script>
+
 </body>
-
 </html>
-
-

@@ -1,28 +1,54 @@
-// on the hamburger menu
-const hamburger = document.querySelector('.hamburger');
-const nav = document.getElementById('nav-bar');
+// Initialize Lucide Icons
+lucide.createIcons();
 
-hamburger.addEventListener('click', () => {
-    nav.classList.toggle('active');
+// Mobile Menu Toggle Logic
+const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+const navMenu = document.getElementById('nav-menu');
+
+mobileMenuBtn.addEventListener('click', () => {
+  mobileMenuBtn.classList.toggle('active');
+  navMenu.classList.toggle('active');
 });
 
+// Close menu when a link is clicked
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    mobileMenuBtn.classList.remove('active');
+    navMenu.classList.remove('active');
+  });
+});
 
-// Animate skills when scrolling
-const sections = document.querySelectorAll('section'); // all sections
-const navLinks = document.querySelectorAll('#nav-bar a');
+// Reveal Animation on Scroll
+const observerOptions = {
+  threshold: 0.1
+};
 
-window.addEventListener('scroll', () => {
-    let scrollPos = window.scrollY + 100; // adjust for navbar
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('active');
+    }
+  });
+}, observerOptions);
 
-    sections.forEach(section => {
-        if (scrollPos >= section.offsetTop && scrollPos < section.offsetTop + section.offsetHeight) {
-            const id = section.getAttribute('id');
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + id) {
-                    link.classList.add('active');
-                }
-            });
-        }
-    });
+document.querySelectorAll('.reveal').forEach(el => {
+  observer.observe(el);
+});
+
+// Smooth Scroll Navigation
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    const targetId = this.getAttribute('href');
+    if (targetId === '#') return;
+    
+    e.preventDefault();
+    const targetElement = document.querySelector(targetId);
+    
+    if (targetElement) {
+      window.scrollTo({
+        top: targetElement.offsetTop - 80, // Adjust for nav height
+        behavior: 'smooth'
+      });
+    }
+  });
 });

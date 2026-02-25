@@ -1,50 +1,61 @@
-.about-container {
-    display: flex;
-    align-items: flex-start; /* Aligns items to the top */
-    gap: 50px;              /* Space between photo and text */
-    max-width: 1100px;
-    width: 100%;
-    margin: 0 auto;         /* Centers the section on wide screens */
+.about-content {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr 1fr;
+  gap: 40px;
+  margin-top: 20px;
+  align-items: flex-start;
 }
 
-.about-container img {
-    width: 300px;           /* Fixed size for the photo */
-    height: auto;
-    border-radius: 10px;
-    object-fit: cover;
+.about-img-square {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: var(--card-bg);
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
 }
 
-.about-text {
-    flex: 1;                /* Takes up all space next to image */
+.about-img-square:hover { border-color: var(--accent); }
+
+.about-text p {
+  color: var(--text-dim);
+  font-size: 1.05rem;
+  margin-bottom: 24px;
 }
 
-.personal-info {
-    margin-top: 25px;
+.aspiration-box {
+  background: var(--accent-dim);
+  padding: 20px;
+  border-radius: 16px;
+  border-left: 4px solid var(--accent);
+  margin-top: 10px;
 }
 
-.personal-info ul {
-    list-style: none;       /* Removes the dots */
-    padding: 0;
-    display: grid;          /* Creates the side-by-side list layout */
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
-    gap: 15px;
+.aspiration-box h4 { margin-bottom: 8px; color: var(--text-main); }
+.aspiration-box p { font-size: 0.95rem; margin-bottom: 0; color: var(--text-main); opacity: 0.9; }
+
+.skill-category { margin-bottom: 25px; }
+.skill-category h4 { font-size: 0.9rem; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; letter-spacing: 1px; }
+
+.skill-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+
+.skill-tag {
+  padding: 8px 16px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  font-size: 0.85rem;
+  color: var(--text-main);
+  transition: var(--transition);
 }
 
-.personal-info li strong {
-    color: #149ddd;
-    display: inline-block;
-    width: 100px;           /* Aligns the labels */
-}
+.skill-tag:hover { border-color: var(--accent); background: var(--accent-dim); }
 
-/* Responsive: Stack them on mobile */
-@media (max-width: 768px) {
-    .about-container {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .about-container img {
-        width: 200px;
-    }
+@media (max-width: 968px) {
+  .about-content { grid-template-columns: 1fr; }
+  .about-img-square { max-width: 300px; margin: 0 auto; }
 }
