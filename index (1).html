@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sunil Paudel — Web Developer</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&display=swap" rel="stylesheet" />
+
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="hamburger.css" />
+  <link rel="stylesheet" href="home.css" />
+  <link rel="stylesheet" href="about.css" />
+  <link rel="stylesheet" href="portfolio.css" />
+  <link rel="stylesheet" href="contact.css" />
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav id="nav">
+  <a href="#hero" class="logo">Sunil<em>.</em></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#portfolio">Work</a></li>
+    <li><a href="#certifications">Certs</a></li>
+    <li><a href="#resume">Resume</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="burger" id="burger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+
+<!-- ══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════ -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-grid">
+
+      <div>
+        <!-- Mobile only: circular photo above name -->
+        <div class="hero-photo-mobile">
+          <img src="images/profile-pic.png" alt="Sunil Paudel" />
+        </div>
+
+        <div class="hero-tag">Available for work</div>
+
+        <h1 class="hero-name">
+          Hello, I'm
+          <span>Sunil Paudel</span>
+        </h1>
+
+        <p class="hero-sub">
+          <strong>Web Developer</strong> building clean, fast websites
+          with HTML, CSS &amp; JavaScript — based in Kathmandu, Nepal.
+        </p>
+
+        <div class="hero-btns">
+          <a href="#portfolio" class="btn btn-solid">View My Work</a>
+          <a href="#contact"   class="btn btn-ghost">Get In Touch</a>
+          <!-- Replace sunil-cv.pdf with your actual CV filename -->
+          <a href="sunil-cv.pdf" download class="btn btn-ghost">Download CV ↓</a>
+        </div>
+      </div>
+
+      <!-- Desktop only: profile photo on right -->
+      <div class="hero-photo">
+        <img src="images/profile-pic.png" alt="Sunil Paudel" />
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     ABOUT
+══════════════════════════════════════════ -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+
+      <div class="about-photo reveal">
+        <img src="images/profile-pic.png" alt="Sunil Paudel" />
+      </div>
+
+      <div class="reveal">
+        <div class="sec-label">About Me</div>
+        <h2 class="sec-title">A bit about who I am</h2>
+
+        <p class="about-text">
+          I'm a self-driven beginner web developer with a genuine love for building clean,
+          functional websites. Currently pursuing my Bachelor's degree while learning
+          and shipping real projects.
+        </p>
+
+        <div class="info-grid">
+          <div class="info-row">
+            <div class="info-key">Birthday</div>
+            <div class="info-val">23 Dec 2005</div>
+          </div>
+          <div class="info-row">
+            <div class="info-key">Location</div>
+            <div class="info-val">Kathmandu, Nepal</div>
+          </div>
+          <div class="info-row">
+            <div class="info-key">Email</div>
+            <div class="info-val">sunilpaudel@gmail.com</div><!-- ← your email -->
+          </div>
+          <div class="info-row">
+            <div class="info-key">Phone</div>
+            <div class="info-val">+977 9844368013</div><!-- ← your phone -->
+          </div>
+          <div class="info-row">
+            <div class="info-key">Degree</div>
+            <div class="info-val">Bachelor (Running)</div>
+          </div>
+          <div class="info-row">
+            <div class="info-key">Status</div>
+            <div class="info-val">Open to work</div>
+          </div>
+        </div>
+
+        <div class="chips">
+          <!-- Add or remove skills as needed -->
+          <span class="chip">HTML5</span>
+          <span class="chip">CSS3</span>
+          <span class="chip">JavaScript</span>
+          <span class="chip">Python</span>
+          <span class="chip">Pygame</span>
+          <span class="chip">REST APIs</span>
+          <span class="chip">Git</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     PORTFOLIO
+══════════════════════════════════════════ -->
+<section id="portfolio">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-label">My Work</div>
+      <h2 class="sec-title">Featured Projects</h2>
+    </div>
+
+    <div class="proj-grid">
+
+      <!-- Featured (full width) -->
+      <div class="proj-card featured reveal">
+        <img class="proj-img" src="img/yumio.png" alt="YUMIO" />
+        <div class="proj-body">
+          <div class="proj-tags">
+            <span class="proj-tag">Full Stack</span>
+            <span class="proj-tag">Web App</span>
+          </div>
+          <div class="proj-title">YUMIO — Food Delivery Platform</div>
+          <p class="proj-desc">
+            A production-ready food delivery platform. Users can order food, view recipes,
+            make secure payments, and track orders in real-time. Includes a customer frontend,
+            admin panel, and robust backend.
+          </p>
+        </div>
+      </div>
+
+      <div class="proj-card reveal">
+        <img class="proj-img" src="img/weather_app.png" alt="Weather App" />
+        <div class="proj-body">
+          <div class="proj-tags">
+            <span class="proj-tag">JavaScript</span>
+            <span class="proj-tag">API</span>
+          </div>
+          <div class="proj-title">Weather App</div>
+          <p class="proj-desc">
+            Real-time weather — temperature, humidity, and conditions — for any location
+            via a weather API.
+          </p>
+        </div>
+      </div>
+
+      <div class="proj-card reveal">
+        <img class="proj-img" src="img/currency_converter.png" alt="Currency Converter" />
+        <div class="proj-body">
+          <div class="proj-tags">
+            <span class="proj-tag">JavaScript</span>
+            <span class="proj-tag">API</span>
+          </div>
+          <div class="proj-title">Currency Converter</div>
+          <p class="proj-desc">
+            Converts amounts between currencies in real-time using live exchange rate APIs.
+          </p>
+        </div>
+      </div>
+
+      <div class="proj-card featured reveal">
+        <img class="proj-img" src="img/chess_pygame.png" alt="Chess Pygame" />
+        <div class="proj-body">
+          <div class="proj-tags">
+            <span class="proj-tag">Python</span>
+            <span class="proj-tag">Pygame</span>
+          </div>
+          <div class="proj-title">Chess — Pygame</div>
+          <p class="proj-desc">
+            3rd-semester project: a full chess game with graphical board, valid moves,
+            and check/checkmate detection for two players.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     CERTIFICATIONS
+══════════════════════════════════════════ -->
+<section id="certifications">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-label">Credentials</div>
+      <h2 class="sec-title">My Certifications</h2>
+    </div>
+
+    <div class="cert-grid">
+      <!--
+        Replace each card with your REAL certifications.
+        cert-status class options:
+          (default) = Done
+          progress  = In Progress
+      -->
+
+      <div class="cert-card reveal">
+        <div class="cert-icon">🌐</div>
+        <span class="cert-status">Done</span>
+        <div class="cert-name">Responsive Web Design</div>
+        <div class="cert-by">freeCodeCamp</div>
+        <div class="cert-year">2024</div>
+      </div>
+
+      <div class="cert-card reveal">
+        <div class="cert-icon">⚡</div>
+        <span class="cert-status">Done</span>
+        <div class="cert-name">JavaScript Algorithms &amp; Data Structures</div>
+        <div class="cert-by">freeCodeCamp</div>
+        <div class="cert-year">2024</div>
+      </div>
+
+      <div class="cert-card reveal">
+        <div class="cert-icon">🐍</div>
+        <span class="cert-status">Done</span>
+        <div class="cert-name">Python Fundamentals</div>
+        <div class="cert-by">Coursera</div>
+        <div class="cert-year">2023</div>
+      </div>
+
+      <div class="cert-card reveal">
+        <div class="cert-icon">🎨</div>
+        <span class="cert-status progress">In Progress</span>
+        <div class="cert-name">Frontend Development Libraries</div>
+        <div class="cert-by">freeCodeCamp</div>
+        <div class="cert-year">2025</div>
+      </div>
+
+      <div class="cert-card reveal">
+        <div class="cert-icon">🔒</div>
+        <span class="cert-status">Done</span>
+        <div class="cert-name">Cybersecurity Fundamentals</div>
+        <div class="cert-by">Cisco Networking Academy</div>
+        <div class="cert-year">2024</div>
+      </div>
+
+      <div class="cert-card reveal">
+        <div class="cert-icon">📁</div>
+        <span class="cert-status">Done</span>
+        <div class="cert-name">Git &amp; Version Control</div>
+        <div class="cert-by">Atlassian / GitHub</div>
+        <div class="cert-year">2023</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     RESUME
+══════════════════════════════════════════ -->
+<section id="resume">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-label">Background</div>
+      <h2 class="sec-title">Education &amp; Experience</h2>
+    </div>
+
+    <div class="resume-wrap reveal">
+
+      <div class="resume-side">
+        <h3>My Journey</h3>
+        <p>A snapshot of my academic path and hands-on projects so far.</p>
+        <!-- Replace sunil-cv.pdf with your actual CV filename -->
+        <a href="sunil-cv.pdf" download class="btn btn-solid">Download CV ↓</a>
+        <a href="#contact" class="btn btn-ghost">Hire Me</a>
+      </div>
+
+      <div class="timeline">
+
+        <div class="tl-group">
+          <div class="tl-label">🎓 Education</div>
+
+          <div class="tl-item">
+            <div class="tl-dot-col"><div class="tl-dot"></div><div class="tl-line"></div></div>
+            <div>
+              <!-- Update your degree & college name -->
+              <div class="tl-title">Bachelor of Science in Computing</div>
+              <div class="tl-place">Tribhuvan University, Kathmandu</div>
+              <div class="tl-date">2023 — Present</div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot-col"><div class="tl-dot"></div></div>
+            <div>
+              <div class="tl-title">+2 Science (NEB)</div>
+              <div class="tl-place">Secondary School, Kathmandu</div>
+              <div class="tl-date">2021 — 2023</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-group">
+          <div class="tl-label">💼 Projects</div>
+
+          <div class="tl-item">
+            <div class="tl-dot-col"><div class="tl-dot"></div><div class="tl-line"></div></div>
+            <div>
+              <div class="tl-title">YUMIO — Food Delivery Platform</div>
+              <div class="tl-place">Personal Project · Full Stack</div>
+              <div class="tl-date">2024</div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot-col"><div class="tl-dot"></div><div class="tl-line"></div></div>
+            <div>
+              <div class="tl-title">Chess Game — Pygame</div>
+              <div class="tl-place">3rd Semester Academic Project</div>
+              <div class="tl-date">2024</div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot-col"><div class="tl-dot"></div></div>
+            <div>
+              <div class="tl-title">Weather App &amp; Currency Converter</div>
+              <div class="tl-place">Frontend · API Projects</div>
+              <div class="tl-date">2023 — 2024</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     CONTACT
+══════════════════════════════════════════ -->
+<section id="contact">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-label">Let's Talk</div>
+      <h2 class="sec-title">Get In Touch</h2>
+    </div>
+
+    <div class="contact-wrap">
+
+      <div class="reveal">
+        <p class="contact-desc">
+          Whether it's a new project, collaboration, or just a hello —
+          I'd love to hear from you.
+        </p>
+        <div class="c-items">
+          <div class="c-item">
+            <div class="c-icon">📧</div>
+            <div>
+              <div class="c-label">Email</div>
+              <div class="c-val">sunilpaudel@gmail.com</div><!-- ← your email -->
+            </div>
+          </div>
+          <div class="c-item">
+            <div class="c-icon">📱</div>
+            <div>
+              <div class="c-label">Phone</div>
+              <div class="c-val">+977 9844368013</div><!-- ← your phone -->
+            </div>
+          </div>
+          <div class="c-item">
+            <div class="c-icon">📍</div>
+            <div>
+              <div class="c-label">Location</div>
+              <div class="c-val">Kathmandu, Nepal</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cform reveal">
+        <h4>Send a Message</h4>
+        <form id="contactForm">
+          <div class="f-row">
+            <div class="f-group">
+              <label for="fname">Your Name</label>
+              <input id="fname" name="from_name" type="text" placeholder="John Doe" required />
+            </div>
+            <div class="f-group">
+              <label for="femail">Your Email</label>
+              <input id="femail" name="from_email" type="email" placeholder="you@email.com" required />
+            </div>
+          </div>
+          <div class="f-group">
+            <label for="finquiry">Inquiry Type</label>
+            <select id="finquiry" name="inquiry">
+              <option>General Question</option>
+              <option>Collaboration / Partnership</option>
+              <option>New Project / Hire Me</option>
+              <option>Support</option>
+            </select>
+          </div>
+          <div class="f-group">
+            <label for="fmsg">Message</label>
+            <textarea id="fmsg" name="message" placeholder="Tell me about your project…" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-solid f-submit" id="submitBtn">Send Message →</button>
+          <div class="f-msg" id="fStatus"></div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer>
+  <p>Built by <span>Sunil Paudel</span> · © 2025</p>
+  <div class="socials">
+    <!-- Replace # with your real profile URLs -->
+    <a href="https://github.com/sunil0x" class="soc-link" title="GitHub"   target="_blank">GH</a>
+    <a href="#"                           class="soc-link" title="LinkedIn" target="_blank">in</a>
+    <a href="#"                           class="soc-link" title="Twitter"  target="_blank">𝕏</a>
+  </div>
+</footer>
+
+<!-- Scroll to top -->
+<div id="top" onclick="scrollTo({top:0, behavior:'smooth'})">↑</div>
+
+<!-- Script -->
+<script src="script.js"></script>
+
+</body>
+</html>
