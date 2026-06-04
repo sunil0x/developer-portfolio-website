@@ -1,54 +1,50 @@
-// Initialize Lucide Icons
-lucide.createIcons();
-
-// Mobile Menu Toggle Logic
+// Mobile Menu Toggle
 const mobileMenuBtn = document.getElementById('mobile-menu-btn');
 const navMenu = document.getElementById('nav-menu');
 
-mobileMenuBtn.addEventListener('click', () => {
-  mobileMenuBtn.classList.toggle('active');
-  navMenu.classList.toggle('active');
-});
-
-// Close menu when a link is clicked
-document.querySelectorAll('.nav-links a').forEach(link => {
-  link.addEventListener('click', () => {
-    mobileMenuBtn.classList.remove('active');
-    navMenu.classList.remove('active');
+if (mobileMenuBtn && navMenu) {
+  mobileMenuBtn.addEventListener('click', () => {
+    mobileMenuBtn.classList.toggle('active');
+    navMenu.classList.toggle('active');
   });
-});
+
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenuBtn.classList.remove('active');
+      navMenu.classList.remove('active');
+    });
+  });
+}
 
 // Reveal Animation on Scroll
-const observerOptions = {
-  threshold: 0.1
-};
+const revealElements = document.querySelectorAll('.reveal');
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('active');
-    }
-  });
-}, observerOptions);
+if ('IntersectionObserver' in window && revealElements.length > 0) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+      }
+    });
+  }, { threshold: 0.1 });
 
-document.querySelectorAll('.reveal').forEach(el => {
-  observer.observe(el);
-});
+  revealElements.forEach(el => observer.observe(el));
+} else {
+  revealElements.forEach(el => el.classList.add('active'));
+}
 
-// Smooth Scroll Navigation
+// Smooth Scroll for internal links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
     const targetId = this.getAttribute('href');
     if (targetId === '#') return;
-    
-    e.preventDefault();
+
     const targetElement = document.querySelector(targetId);
-    
     if (targetElement) {
-      window.scrollTo({
-        top: targetElement.offsetTop - 80, // Adjust for nav height
-        behavior: 'smooth'
-      });
+      e.preventDefault();
+      const offset = 80;
+      const top = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
     }
   });
 });
