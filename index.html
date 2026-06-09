@@ -3,299 +3,780 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sunil Paudel | Portfolio</title>
-  <meta name="description" content="Sunil Paudel's portfolio website showcasing projects, skills, certifications, and contact details." />
-
+  <title>Sunil Paudel — Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Bricolage+Grotesque:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="home.css" />
-  <link rel="stylesheet" href="about.css" />
-  <link rel="stylesheet" href="portfolio.css" />
-  <link rel="stylesheet" href="contact.css" />
-  <link rel="stylesheet" href="hamburger.css" />
+    :root {
+      --bg:       #0E0E0E;
+      --surface:  #161616;
+      --card:     #1C1C1C;
+      --border:   #2A2A2A;
+      --text:     #F0EDE8;
+      --muted:    #888480;
+      --accent:   #C8F04D;
+      --accent2:  #4D8FF0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 60px;
+      height: 64px;
+      background: rgba(14,14,14,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .logo {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.9rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+    }
+    .logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.8rem;
+      font-family: 'Space Mono', monospace;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-cv {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-decoration: none;
+      border: 1px solid var(--accent);
+      padding: 8px 18px;
+      transition: background .2s, color .2s;
+    }
+    .nav-cv:hover { background: var(--accent); color: var(--bg); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 100px 60px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg-number {
+      position: absolute;
+      right: -20px; top: 50%;
+      transform: translateY(-50%);
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(180px, 22vw, 320px);
+      font-weight: 700;
+      color: transparent;
+      -webkit-text-stroke: 1px var(--border);
+      line-height: 1;
+      user-select: none;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 60px;
+      align-items: center;
+      width: 100%;
+      max-width: 1200px;
+      position: relative; z-index: 1;
+    }
+    .hero-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      display: inline-flex; align-items: center; gap: 10px;
+      margin-bottom: 24px;
+    }
+    .hero-tag::before {
+      content: '';
+      display: block; width: 32px; height: 1px;
+      background: var(--accent);
+    }
+    h1 {
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 28px;
+    }
+    h1 .dim { color: var(--muted); font-weight: 300; }
+    .hero-bio {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 480px;
+      line-height: 1.75;
+      margin-bottom: 40px;
+    }
+    .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 48px; }
+    .btn-fill {
+      background: var(--accent);
+      color: var(--bg);
+      text-decoration: none;
+      padding: 13px 28px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      transition: opacity .2s;
+    }
+    .btn-fill:hover { opacity: 0.85; }
+    .btn-ghost {
+      color: var(--text);
+      text-decoration: none;
+      padding: 12px 28px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      border: 1px solid var(--border);
+      letter-spacing: 0.04em;
+      transition: border-color .2s, color .2s;
+    }
+    .btn-ghost:hover { border-color: var(--text); }
+
+    .hero-socials { display: flex; gap: 20px; }
+    .hero-socials a {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .hero-socials a:hover { color: var(--accent); }
+
+    /* photo card */
+    .hero-photo-wrap {
+      position: relative;
+    }
+    .hero-photo-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -12px;
+      border: 1px solid var(--border);
+      z-index: 0;
+    }
+    .hero-photo-wrap::after {
+      content: '';
+      position: absolute;
+      bottom: -20px; right: -20px;
+      width: 100%; height: 100%;
+      background: var(--accent);
+      opacity: 0.07;
+      z-index: 0;
+    }
+    .hero-photo {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      position: relative; z-index: 1;
+      filter: grayscale(20%);
+    }
+    .photo-label {
+      position: absolute;
+      bottom: 16px; left: 16px;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--bg);
+      padding: 4px 10px;
+      z-index: 2;
+    }
+
+    /* ── SECTION BASE ── */
+    section { padding: 100px 60px; max-width: 1200px; margin: 0 auto; }
+
+    .sec-eyebrow {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      display: inline-flex; align-items: center; gap: 12px;
+      margin-bottom: 16px;
+    }
+    .sec-eyebrow::before {
+      content: '';
+      width: 28px; height: 1px;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+    h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 56px;
+    }
+    h2 .dim { color: var(--muted); font-weight: 300; }
+
+    /* divider */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: var(--border);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .about-text p { color: var(--muted); line-height: 1.85; font-size: 0.975rem; }
+    .about-text p + p { margin-top: 18px; }
+    .about-text strong { color: var(--text); font-weight: 500; }
+
+    .about-vision {
+      margin-top: 32px;
+      border-left: 2px solid var(--accent);
+      padding-left: 20px;
+    }
+    .about-vision p {
+      font-style: italic;
+      font-size: 0.875rem;
+    }
+
+    .skills-section h4 {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+      margin-top: 32px;
+    }
+    .skills-section h4:first-child { margin-top: 0; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag {
+      font-size: 0.8rem;
+      font-family: 'Space Mono', monospace;
+      color: var(--text);
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 5px 14px;
+      transition: border-color .2s, color .2s;
+    }
+    .tag:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── PROJECTS ── */
+    .proj-grid { display: flex; flex-direction: column; gap: 0; }
+    .proj-row {
+      display: grid;
+      grid-template-columns: 56px 1fr auto;
+      gap: 32px;
+      align-items: start;
+      padding: 36px 0;
+      border-top: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+      transition: background .15s;
+      position: relative;
+    }
+    .proj-row:last-child { border-bottom: 1px solid var(--border); }
+    .proj-row:hover .proj-num { color: var(--accent); }
+    .proj-row:hover .proj-title { color: var(--accent); }
+    .proj-row:hover .proj-arrow { transform: translate(4px, -4px); color: var(--accent); }
+
+    .proj-num {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--border);
+      padding-top: 4px;
+      transition: color .2s;
+      letter-spacing: 0.1em;
+    }
+    .proj-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+      transition: color .2s;
+    }
+    .proj-meta {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+    .proj-desc { font-size: 0.875rem; color: var(--muted); line-height: 1.7; max-width: 560px; margin-bottom: 14px; }
+    .proj-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+    .pill {
+      font-size: 0.68rem;
+      font-family: 'Space Mono', monospace;
+      color: var(--accent);
+      border: 1px solid rgba(200,240,77,0.3);
+      padding: 2px 10px;
+    }
+    .proj-arrow {
+      font-size: 1.4rem;
+      color: var(--muted);
+      transition: transform .2s, color .2s;
+      padding-top: 4px;
+    }
+
+    /* ── CERTS ── */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+    .cert-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 32px 28px;
+      transition: border-color .2s;
+    }
+    .cert-card:hover { border-color: var(--accent); }
+    .cert-year {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+      margin-bottom: 14px;
+      display: block;
+    }
+    .cert-card h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+    .cert-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── CONTACT ── */
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 80px;
+    }
+    .contact-left h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .contact-left p { font-size: 0.9rem; color: var(--muted); line-height: 1.75; margin-bottom: 36px; }
+    .contact-detail {
+      display: flex; flex-direction: column; gap: 20px;
+    }
+    .cd-item {
+      display: flex; flex-direction: column; gap: 3px;
+    }
+    .cd-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .cd-value { font-size: 0.9rem; color: var(--text); }
+
+    .contact-form { display: flex; flex-direction: column; gap: 16px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    input, select, textarea {
+      width: 100%;
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.875rem;
+      padding: 12px 14px;
+      outline: none;
+      transition: border-color .2s;
+      appearance: none;
+      resize: vertical;
+    }
+    input:focus, select:focus, textarea:focus { border-color: var(--accent); }
+    input::placeholder, textarea::placeholder { color: var(--border); }
+    select option { background: var(--card); }
+    .btn-submit {
+      background: var(--accent);
+      color: var(--bg);
+      border: none;
+      cursor: pointer;
+      padding: 13px 28px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      font-family: 'Space Grotesk', sans-serif;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      align-self: flex-start;
+      transition: opacity .2s;
+    }
+    .btn-submit:hover { opacity: 0.85; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    footer p {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+    }
+    .footer-back a {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .footer-back a:hover { color: var(--accent); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 0 24px; }
+      nav .nav-links { display: none; }
+      #hero { padding: 100px 24px 60px; }
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-photo-wrap { display: none; }
+      section { padding: 72px 24px; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .cert-grid { grid-template-columns: 1fr; }
+      .contact-wrap { grid-template-columns: 1fr; gap: 40px; }
+      .form-row { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 10px; text-align: center; padding: 24px; }
+      .proj-row { grid-template-columns: 40px 1fr auto; gap: 16px; }
+    }
+  </style>
 </head>
 <body>
 
-  <header>
-    <div class="container">
-      <nav>
-        <a href="#hero" class="logo">Sunil<span>.</span></a>
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="logo">SP<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#certifications">Certs</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="./CV.pdf" class="nav-cv">Resume ↗</a>
+</nav>
 
-        <button class="menu-toggle" id="mobile-menu-btn" aria-label="Toggle menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-
-        <ul class="nav-links" id="nav-menu">
-          <li><a href="#hero">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#certifications">Certificates</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-
-        <a href="./CV.pdf" class="btn-cv-nav">Resume / CV</a>
-      </nav>
+<!-- HERO -->
+<section id="hero" style="max-width:100%; padding-top:100px;">
+  <div class="hero-bg-number">SP</div>
+  <div class="hero-inner">
+    <div>
+      <span class="hero-tag">Available for opportunities</span>
+      <h1>
+        Sunil<br>
+        <span class="dim">Paudel</span>
+      </h1>
+      <p class="hero-bio">
+        Computer engineering student at Tribhuvan University. I build things at the intersection of data and the web — from ML models to full-stack applications.
+      </p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn-fill">View Projects</a>
+        <a href="#contact" class="btn-ghost">Get in Touch</a>
+      </div>
+      <div class="hero-socials">
+        <a href="https://www.linkedin.com/in/sunil-paudel-1a4a08327/" target="_blank">LinkedIn</a>
+        <a href="https://github.com/sunil0x" target="_blank">GitHub</a>
+        <a href="https://www.instagram.com/sunnil_013/" target="_blank">Instagram</a>
+        <a href="https://www.facebook.com/sunil.paudel.3975" target="_blank">Facebook</a>
+      </div>
     </div>
-  </header>
-
-  <main>
-    <div class="container">
-
-      <section id="hero">
-        <div class="hero-grid">
-          <div class="hero-left">
-            <span class="hero-greeting">Hi, I am</span>
-            <h1 class="hero-name">Sunil Paudel</h1>
-            <p class="hero-role">
-              I am passionate about data analytics, machine learning, and frontend development.
-              I enjoy transforming data into actionable insights, building predictive models,
-              and creating user-friendly web interfaces.
-            </p>
-
-            <div class="social-links">
-              <a href="https://www.linkedin.com/in/sunil-paudel-1a4a08327/" target="_blank" class="social-icon" title="LinkedIn">
-                <img src="/icons/linkdein.png" alt="LinkedIn">
-              </a>
-              <a href="https://github.com/sunil0x" target="_blank" class="social-icon" title="GitHub">
-                <img src="/icons/github.png" alt="GitHub">
-              </a>
-              <a href="https://www.instagram.com/sunnil_013/" target="_blank" class="social-icon" title="Instagram">
-                <img src="/icons/insta.png" alt="Instagram">
-              </a>
-              <a href="https://www.facebook.com/sunil.paudel.3975" target="_blank" class="social-icon" title="Facebook">
-                <img src="/icons/fb.png" alt="Facebook">
-              </a>
-            </div>
-
-            <div class="hero-btns">
-              <a href="#projects" class="btn-solid">Explore Work</a>
-              <a href="#contact" class="btn-solid btn-outline">Let's Chat</a>
-            </div>
-          </div>
-
-          <div class="hero-right">
-            <div class="hero-img-box">
-              <div class="placeholder-img">
-                <img src="images/profile-pic.png" alt="Sunil Paudel" class="placeholder-img">
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="about">
-        <div class="reveal">
-          <span class="sec-label">Behind the scenes</span>
-          <h2 class="sec-title">About Me</h2>
-
-          <div class="about-content">
-            <div class="about-img-square">
-              <img src="images/about-pic.png" alt="About Sunil" class="placeholder-img">
-            </div>
-
-            <div class="about-text">
-              <p>
-                I am a versatile professional blending the analytical rigor of
-                <strong>Data Analysis</strong> with the creative execution of
-                <strong>Web Development</strong>. Based in Nepal, I focus on bridging the gap
-                between data-driven insights and user-centric digital products.
-              </p>
-
-              <p>
-                My unique value lies in understanding not just how to build a website, but how
-                to ensure it converts and aligns with business goals.
-              </p>
-
-              <div class="aspiration-box">
-                <h4>Vision 2030</h4>
-                <p>
-                  I aim to evolve into a Senior Lead Analyst, pioneering integrated marketing
-                  technologies that help global brands make smarter, data-first decisions.
-                </p>
-              </div>
-            </div>
-
-            <div class="about-skills">
-              <div class="skill-category">
-                <h4>Analytical Stack</h4>
-                <div class="skill-tags">
-                  <span class="skill-tag">Market Research</span>
-                  <span class="skill-tag">Data Visualization</span>
-                  <span class="skill-tag">Google Analytics</span>
-                  <span class="skill-tag">Python</span>
-                  <span class="skill-tag">Excel</span>
-                  <span class="skill-tag">Power BI</span>
-                </div>
-              </div>
-
-              <div class="skill-category">
-                <h4>Technical Development</h4>
-                <div class="skill-tags">
-                  <span class="skill-tag">React.js</span>
-                  <span class="skill-tag">JavaScript</span>
-                  <span class="skill-tag">Tailwind CSS</span>
-                  <span class="skill-tag">Node.js</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="projects">
-        <div class="reveal">
-          <span class="sec-label">My Work</span>
-          <h2 class="sec-title">Featured Projects</h2>
-
-          <div class="project-card">
-            <div class="project-img">
-              <img src="img/chess_pygame.png" alt="Chess Game">
-            </div>
-            <div class="project-info">
-              <span class="project-tag">Python | Pygame</span>
-              <h3>Chess Game — Pygame</h3>
-              <p style="font-style: italic; font-size: 0.8rem; margin-bottom: 10px; color: var(--text-dim);">3rd Semester Academic Project</p>
-              <p>A fully functional two-player chess game built with Python and Pygame. Features include valid move enforcement and check/checkmate detection implemented from scratch.</p>
-              <div class="tech-stack" style="display: flex; gap: 10px; margin-bottom: 15px;">
-                <span class="tech-pill">Python</span>
-                <span class="tech-pill">Pygame</span>
-                <span class="tech-pill">OOP</span>
-              </div>
-              <a href="#" class="project-link">View Project →</a>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <div class="project-img">
-              <img src="img/yumio.png" alt="Yumio Food Delivery App">
-            </div>
-            <div class="project-info">
-              <span class="project-tag">Full-Stack Web Application</span>
-              <h3>Yumio — Food Delivery App</h3>
-              <p style="font-style: italic; font-size: 0.8rem; margin-bottom: 10px; color: var(--text-dim);">4th Semester DBMS PERN Stack Project</p>
-              <p>A food ordering platform where users can browse, order their favourite meals, and even get recipes. Built with the <strong>PERN</strong> stack (PostgreSQL, Express, React, Node.js).</p>
-              <div class="tech-stack" style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 15px;">
-                <span class="tech-pill">JavaScript</span>
-                <span class="tech-pill">React</span>
-                <span class="tech-pill">Node.js</span>
-                <span class="tech-pill">Express</span>
-                <span class="tech-pill">PostgreSQL</span>
-              </div>
-              <a href="https://yumio-frontend-7qtx.onrender.com/" class="project-link">View Demo →</a>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <div class="project-img">
-              <img src="img/nepse_analysis.png" alt="NEPSE Data Analysis">
-            </div>
-            <div class="project-info">
-              <span class="project-tag">Data Analysis</span>
-              <h3>NEPSE Data Analysis</h3>
-              <p style="font-style: italic; font-size: 0.8rem; margin-bottom: 10px; color: var(--text-dim);">4th Semester Advanced Python Project</p>
-              <p>An exploratory data analysis project focused on the Nepal Stock Exchange (NEPSE). Uses Python's data ecosystem to surface insights and patterns from market data.</p>
-              <div class="tech-stack" style="display: flex; gap: 10px; margin-bottom: 15px;">
-                <span class="tech-pill">Pandas</span>
-                <span class="tech-pill">Matplotlib</span>
-                <span class="tech-pill">Jupyter</span>
-              </div>
-              <a href="#" class="project-link">View Insights →</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="certifications">
-        <div class="reveal">
-          <span class="sec-label">My Credentials</span>
-          <h2 class="sec-title">Certifications</h2>
-
-          <div class="cert-grid">
-            <div class="cert-card">
-              <p class="cert-year">2026</p>
-              <a href="#" target="_blank" class="cert-link">
-                <h4>Associate Data Analyst in SQL</h4>
-              </a>
-              <p class="cert-desc">Datacamp Certificate of Accomplishment covering advanced querying and data manipulation.</p>
-            </div>
-
-            <div class="cert-card">
-              <p class="cert-year">2026</p>
-              <a href="#" target="_blank" class="cert-link">
-                <h4>Data Analyst 101</h4>
-              </a>
-              <p class="cert-desc">Simplilearn Certificate focusing on Excel-based data analysis.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="contact">
-        <div class="reveal">
-          <span class="sec-label">Contact</span>
-          <h2 class="sec-title">Get in Touch</h2>
-
-          <div class="contact-container">
-            <div class="contact-info">
-              <h3>Let's talk about your project</h3>
-              <p>Fill out the form and I'll get back to you within 24 hours.</p>
-
-              <div class="contact-method">
-                <div class="contact-icon">@</div>
-                <div>
-                  <div class="method-label">Email</div>
-                  <div class="method-value">sunilpaudel013@gmail.com</div>
-                </div>
-              </div>
-
-              <div class="contact-method">
-                <div class="contact-icon">L</div>
-                <div>
-                  <div class="method-label">Location</div>
-                  <div class="method-value">Kathmandu, Nepal</div>
-                </div>
-              </div>
-            </div>
-
-            <form class="contact-form">
-              <div class="form-row">
-                <div class="form-group"><label>Full Name</label><input type="text" placeholder="Your Name" required /></div>
-                <div class="form-group"><label>Email Address</label><input type="email" placeholder="email@example.com" required /></div>
-              </div>
-
-              <div class="form-group">
-                <label>Inquiry Type</label>
-                <select required>
-                  <option value="" disabled selected>Select an option</option>
-                  <option value="project">New Project</option>
-                  <option value="hiring">Hiring / Full-time</option>
-                  <option value="collaboration">Collaboration</option>
-                </select>
-              </div>
-
-              <div class="form-group"><label>Message</label><textarea rows="5" placeholder="Tell me more..."></textarea></div>
-              <button type="submit" class="btn-solid">Send Message</button>
-            </form>
-          </div>
-        </div>
-      </section>
-
+    <div class="hero-photo-wrap">
+      <img
+        src="https://developer-portfolio-website-xi.vercel.app/images/profile-pic.png"
+        alt="Sunil Paudel"
+        class="hero-photo"
+      />
+      <span class="photo-label">Sunil Paudel</span>
     </div>
-  </main>
+  </div>
+</section>
 
-  <footer class="footer">
-    <p>&copy; 2025 Sunil Paudel. Built with Passion.</p>
-  </footer>
+<div class="divider"></div>
 
-  <script src="script.js"></script>
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <script>
-    lucide.createIcons();
-  </script>
+<!-- ABOUT -->
+<section id="about">
+  <span class="sec-eyebrow">About me</span>
+  <h2>Who I <span class="dim">am</span></h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>
+        I'm a versatile developer blending the analytical rigour of <strong>data analysis</strong> with the creative execution of <strong>web development</strong>. Based in Kathmandu, Nepal, I focus on bridging the gap between data-driven insights and user-centric digital products.
+      </p>
+      <p>
+        My strength is understanding not just how to build something, but why it matters — ensuring every project I work on converts and aligns with real goals.
+      </p>
+      <div class="about-vision">
+        <p>
+          I aim to evolve into a lead analyst, pioneering integrated technologies that help organizations make smarter, data-first decisions.
+        </p>
+      </div>
+    </div>
+    <div class="skills-section">
+      <h4>Analytics Stack</h4>
+      <div class="tag-row">
+        <span class="tag">Python</span>
+        <span class="tag">Pandas</span>
+        <span class="tag">Power BI</span>
+        <span class="tag">Excel</span>
+        <span class="tag">Matplotlib</span>
+        <span class="tag">Jupyter</span>
+      </div>
+      <h4>Development Stack</h4>
+      <div class="tag-row">
+        <span class="tag">React</span>
+        <span class="tag">Node.js</span>
+        <span class="tag">PostgreSQL</span>
+        <span class="tag">FastAPI</span>
+        <span class="tag">JavaScript</span>
+        <span class="tag">Tailwind CSS</span>
+      </div>
+      <h4>Currently Exploring</h4>
+      <div class="tag-row">
+        <span class="tag">Machine Learning</span>
+        <span class="tag">LSTM</span>
+        <span class="tag">Scikit-learn</span>
+        <span class="tag">LangChain</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <span class="sec-eyebrow">Featured work</span>
+  <h2>Projects <span class="dim">I've built</span></h2>
+  <div class="proj-grid">
+
+    <a href="https://yumio-frontend-7qtx.onrender.com/" target="_blank" class="proj-row">
+      <span class="proj-num">01</span>
+      <div>
+        <p class="proj-meta">4th Semester · PERN Stack · Full-Stack</p>
+        <h3 class="proj-title">Yumio — Food Delivery App</h3>
+        <p class="proj-desc">A food ordering platform where users can browse and order their favourite meals. Built with the PERN stack featuring live menus and recipes.</p>
+        <div class="proj-pills">
+          <span class="pill">React</span>
+          <span class="pill">Node.js</span>
+          <span class="pill">PostgreSQL</span>
+          <span class="pill">Express</span>
+        </div>
+      </div>
+      <span class="proj-arrow">↗</span>
+    </a>
+
+    <a href="#" class="proj-row">
+      <span class="proj-num">02</span>
+      <div>
+        <p class="proj-meta">3rd Semester · Python · Academic</p>
+        <h3 class="proj-title">Chess Game — Pygame</h3>
+        <p class="proj-desc">A fully functional two-player chess game with valid move enforcement, check and checkmate detection, all built from scratch with OOP principles.</p>
+        <div class="proj-pills">
+          <span class="pill">Python</span>
+          <span class="pill">Pygame</span>
+          <span class="pill">OOP</span>
+        </div>
+      </div>
+      <span class="proj-arrow">↗</span>
+    </a>
+
+    <a href="#" class="proj-row">
+      <span class="proj-num">03</span>
+      <div>
+        <p class="proj-meta">4th Semester · Data Analysis · Advanced Python</p>
+        <h3 class="proj-title">NEPSE Market Analysis</h3>
+        <p class="proj-desc">Exploratory analysis of the Nepal Stock Exchange, surfacing patterns and insights from market data using Python's data science ecosystem.</p>
+        <div class="proj-pills">
+          <span class="pill">Pandas</span>
+          <span class="pill">Matplotlib</span>
+          <span class="pill">Jupyter</span>
+        </div>
+      </div>
+      <span class="proj-arrow">↗</span>
+    </a>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <span class="sec-eyebrow">My credentials</span>
+  <h2>Certifi<span class="dim">cations</span></h2>
+  <div class="cert-grid">
+    <div class="cert-card">
+      <span class="cert-year">2026 · Datacamp</span>
+      <h4>Associate Data Analyst in SQL</h4>
+      <p>Certificate of Accomplishment covering advanced querying, joins, subqueries, and data manipulation at scale.</p>
+    </div>
+    <div class="cert-card">
+      <span class="cert-year">2026 · Simplilearn</span>
+      <h4>Data Analyst 101</h4>
+      <p>Foundations of Excel-based data analysis — pivot tables, statistical functions, and dashboarding.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <span class="sec-eyebrow">Let's talk</span>
+  <h2>Get in <span class="dim">touch</span></h2>
+  <div class="contact-wrap">
+    <div class="contact-left">
+      <h3>Have a project or opportunity?</h3>
+      <p>Fill out the form and I'll get back to you within 24 hours. Open to freelance work, collaborations, and full-time roles.</p>
+      <div class="contact-detail">
+        <div class="cd-item">
+          <span class="cd-label">Email</span>
+          <span class="cd-value">sunilpaudel013@gmail.com</span>
+        </div>
+        <div class="cd-item">
+          <span class="cd-label">Location</span>
+          <span class="cd-value">Kathmandu, Nepal</span>
+        </div>
+        <div class="cd-item">
+          <span class="cd-label">University</span>
+          <span class="cd-value">Tribhuvan University, IOE</span>
+        </div>
+      </div>
+    </div>
+    <form class="contact-form" id="contact-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" name="name" placeholder="Your name" required />
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" name="email" placeholder="you@email.com" required />
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Subject</label>
+        <select name="subject" required>
+          <option value="" disabled selected>Select type</option>
+          <option value="New Project">New Project</option>
+          <option value="Hiring / Full-time">Hiring / Full-time</option>
+          <option value="Collaboration">Collaboration</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea name="message" rows="5" placeholder="Tell me about your project..."></textarea>
+      </div>
+      <button type="submit" class="btn-submit" id="submit-btn">Send Message →</button>
+      <p id="form-status" style="display:none; font-family:'Space Mono',monospace; font-size:0.75rem; letter-spacing:0.08em; margin-top:8px;"></p>
+    </form>
+
+    <script>
+      const form = document.getElementById('contact-form');
+      const btn  = document.getElementById('submit-btn');
+      const status = document.getElementById('form-status');
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        btn.textContent = 'Sending…';
+        btn.disabled = true;
+        status.style.display = 'none';
+
+        const data = new FormData(form);
+
+        try {
+          const res = await fetch('https://formspree.io/f/xvznrzpq', {
+            method: 'POST',
+            body: data,
+            headers: { 'Accept': 'application/json' }
+          });
+
+          const json = await res.json();
+
+          if (res.ok) {
+            form.reset();
+            status.style.display = 'block';
+            status.style.color = 'var(--accent)';
+            status.textContent = '✓ Message sent — I\'ll get back to you soon.';
+            btn.textContent = 'Sent ✓';
+          } else {
+            const errMsg = json.errors ? json.errors.map(e => e.message).join(', ') : 'Submission failed.';
+            status.style.display = 'block';
+            status.style.color = '#f04d4d';
+            status.textContent = '✗ ' + errMsg;
+            btn.textContent = 'Send Message →';
+            btn.disabled = false;
+          }
+        } catch (err) {
+          status.style.display = 'block';
+          status.style.color = '#f04d4d';
+          status.textContent = '✗ Network error. Email me at sunilpaudel013@gmail.com';
+          btn.textContent = 'Send Message →';
+          btn.disabled = false;
+        }
+      });
+    </script>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Sunil Paudel. All rights reserved.</p>
+  <div class="footer-back"><a href="#hero">Back to top ↑</a></div>
+</footer>
+
 </body>
 </html>
