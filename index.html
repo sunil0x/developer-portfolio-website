@@ -10,23 +10,25 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:      #ffffff;
-      --card:    #f7f7f7;
-      --border:  #e5e5e5;
-      --text:    #111111;
-      --muted:   #666666;
-      --accent:  #111111;
+      --bg:      #0f172a;
+      --card:    #1e293b;
+      --border:  #334155;
+      --text:    #f1f5f9;
+      --muted:   #94a3b8;
+      --accent:  #3b82f6;
+      --accent-light: #60a5fa;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Inter', sans-serif;
-      background: var(--bg);
+      background: linear-gradient(135deg, #0f172a 0%, #1a2e4a 50%, #0f172a 100%);
       color: var(--text);
       font-size: 16px;
       line-height: 1.6;
       overflow-x: hidden;
+      min-height: 100vh;
     }
 
     ::-webkit-scrollbar { width: 3px; }
@@ -39,7 +41,7 @@
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 60px;
       height: 60px;
-      background: rgba(255,255,255,0.95);
+      background: rgba(15, 23, 42, 0.85);
       backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--border);
     }
@@ -63,11 +65,12 @@
       font-size: 0.82rem;
       color: var(--text);
       text-decoration: none;
-      border: 1px solid var(--text);
+      border: 1px solid var(--accent);
       padding: 6px 16px;
       transition: background .15s, color .15s;
+      border-radius: 4px;
     }
-    .nav-cv:hover { background: var(--text); color: #fff; }
+    .nav-cv:hover { background: var(--accent); color: #fff; }
 
     /* HERO */
     #hero {
@@ -108,24 +111,29 @@
     }
     .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 40px; }
     .btn-fill {
-      background: var(--text);
+      background: var(--accent);
       color: #fff;
       text-decoration: none;
       padding: 11px 24px;
       font-size: 0.85rem;
-      font-weight: 500;
-      transition: opacity .15s;
+      font-weight: 600;
+      transition: all .15s;
+      border-radius: 6px;
+      display: inline-block;
+      border: 1px solid var(--accent);
     }
-    .btn-fill:hover { opacity: 0.75; }
+    .btn-fill:hover { background: var(--accent-light); border-color: var(--accent-light); transform: translateY(-2px); box-shadow: 0 6px 12px rgba(59, 130, 246, 0.3); }
     .btn-ghost {
       color: var(--text);
       text-decoration: none;
       padding: 10px 24px;
       font-size: 0.85rem;
       border: 1px solid var(--border);
-      transition: border-color .15s;
+      transition: all .15s;
+      border-radius: 6px;
+      display: inline-block;
     }
-    .btn-ghost:hover { border-color: var(--muted); }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
     .hero-socials { display: flex; gap: 20px; }
     .hero-socials a {
       font-size: 0.8rem;
@@ -152,9 +160,10 @@
       font-size: 0.6rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--muted);
-      background: #fff;
+      color: var(--text);
+      background: rgba(30, 41, 59, 0.9);
       padding: 3px 8px;
+      border-radius: 4px;
     }
 
     /* SECTIONS */
@@ -165,9 +174,10 @@
       font-size: 0.72rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--accent);
       display: block;
       margin-bottom: 12px;
+      font-weight: 600;
     }
     h2 {
       font-size: clamp(1.8rem, 3.5vw, 2.6rem);
@@ -175,6 +185,10 @@
       letter-spacing: -0.02em;
       line-height: 1.1;
       margin-bottom: 48px;
+      background: linear-gradient(135deg, var(--text) 0%, var(--accent-light) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
     h2 .dim { color: var(--muted); font-weight: 300; }
 
@@ -185,101 +199,143 @@
     .about-text strong { color: var(--text); font-weight: 500; }
     .about-vision {
       margin-top: 24px;
-      border-left: 2px solid var(--border);
+      border-left: 2px solid var(--accent);
       padding-left: 16px;
     }
-    .about-vision p { font-style: italic; font-size: 0.875rem; color: var(--muted); }
+    .about-vision p { font-style: italic; font-size: 0.875rem; color: var(--accent-light); }
 
     .skills-section h4 {
       font-size: 0.7rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--accent);
       margin-bottom: 10px;
       margin-top: 24px;
+      font-weight: 600;
     }
     .skills-section h4:first-child { margin-top: 0; }
     .tag-row { display: flex; flex-wrap: wrap; gap: 6px; }
     .tag {
       font-size: 0.8rem;
-      color: var(--text);
-      background: var(--card);
-      border: 1px solid var(--border);
+      color: var(--accent-light);
+      background: rgba(59, 130, 246, 0.1);
+      border: 1px solid var(--accent);
       padding: 4px 12px;
-      transition: border-color .15s;
+      transition: all .15s;
+      border-radius: 4px;
     }
-    .tag:hover { border-color: var(--text); }
+    .tag:hover { border-color: var(--accent-light); background: rgba(59, 130, 246, 0.2); }
 
     /* PROJECTS */
-    .proj-grid { display: flex; flex-direction: column; }
+    .proj-grid { display: flex; flex-direction: column; gap: 24px; }
     .proj-row {
       display: grid;
-      grid-template-columns: 44px 1fr auto;
-      gap: 24px;
-      align-items: start;
-      padding: 28px 0;
-      border-top: 1px solid var(--border);
+      grid-template-columns: 1fr 280px;
+      gap: 0;
+      background: var(--card);
+      border-radius: 12px;
+      overflow: hidden;
+      padding: 0;
+      border: 1px solid var(--border);
       text-decoration: none;
       color: inherit;
       cursor: pointer;
+      transition: all .3s ease, transform .3s ease;
+      align-items: stretch;
     }
-    .proj-row:last-child { border-bottom: 1px solid var(--border); }
-    .proj-row:hover .proj-title { color: var(--muted); }
+    .proj-row:hover { 
+      border-color: var(--accent);
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(59, 130, 246, 0.15);
+    }
     .proj-row:hover .proj-arrow { transform: translate(3px, -3px); }
+    .proj-content {
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .proj-image {
+      width: 100%;
+      height: 100%;
+      min-height: 240px;
+      background: linear-gradient(135deg, #334155 0%, #1e293b 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: var(--accent);
+      overflow: hidden;
+    }
+    .proj-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+    }
 
     .proj-num {
       font-family: 'Space Mono', monospace;
       font-size: 0.68rem;
-      color: var(--border);
+      color: var(--accent);
       padding-top: 4px;
       letter-spacing: 0.05em;
     }
     .proj-title {
-      font-size: 1.2rem;
-      font-weight: 600;
+      font-size: 1.3rem;
+      font-weight: 700;
       letter-spacing: -0.01em;
-      margin-bottom: 5px;
+      margin-bottom: 8px;
       transition: color .15s;
     }
     .proj-meta {
       font-size: 0.72rem;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--accent-light);
       margin-bottom: 8px;
     }
-    .proj-desc { font-size: 0.875rem; color: var(--muted); line-height: 1.7; max-width: 520px; margin-bottom: 10px; }
-    .proj-pills { display: flex; flex-wrap: wrap; gap: 5px; }
+    .proj-desc { font-size: 0.875rem; color: var(--muted); line-height: 1.7; max-width: 100%; margin-bottom: 12px; }
+    .proj-pills { display: flex; flex-wrap: wrap; gap: 6px; }
     .pill {
       font-size: 0.7rem;
-      color: var(--muted);
-      border: 1px solid var(--border);
-      padding: 2px 8px;
+      color: var(--accent-light);
+      border: 1px solid var(--accent);
+      padding: 4px 10px;
+      border-radius: 4px;
     }
     .proj-arrow {
       font-size: 1.2rem;
-      color: var(--muted);
+      color: var(--accent);
       transition: transform .15s;
-      padding-top: 4px;
+      padding-top: 0;
     }
 
     /* CERTS */
-    .cert-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); }
+    .cert-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
     .cert-card {
-      background: var(--bg);
+      background: var(--card);
       padding: 28px 24px;
-      transition: background .15s;
+      transition: all .3s ease;
+      border-radius: 12px;
+      border: 1px solid var(--border);
     }
-    .cert-card:hover { background: var(--card); }
+    .cert-card:hover { 
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(59, 130, 246, 0.1);
+    }
     .cert-year {
       font-size: 0.68rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--accent-light);
       margin-bottom: 10px;
       display: block;
     }
-    .cert-card h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 6px; }
+    .cert-card h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 6px; color: var(--text); }
     .cert-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
 
     /* CONTACT */
@@ -297,7 +353,7 @@
     label { font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
     input, select, textarea {
       width: 100%;
-      background: var(--bg);
+      background: var(--card);
       border: 1px solid var(--border);
       color: var(--text);
       font-family: 'Inter', sans-serif;
@@ -307,25 +363,26 @@
       transition: border-color .15s;
       appearance: none;
       resize: vertical;
-      border-radius: 0;
+      border-radius: 6px;
     }
-    input:focus, select:focus, textarea:focus { border-color: var(--text); }
-    input::placeholder, textarea::placeholder { color: #ccc; }
-    select option { background: #fff; color: var(--text); }
+    input:focus, select:focus, textarea:focus { border-color: var(--accent); }
+    input::placeholder, textarea::placeholder { color: var(--border); }
+    select option { background: var(--card); color: var(--text); }
     .btn-submit {
-      background: var(--text);
+      background: var(--accent);
       color: #fff;
       border: none;
       cursor: pointer;
       padding: 11px 24px;
       font-size: 0.85rem;
-      font-weight: 500;
+      font-weight: 600;
       font-family: 'Inter', sans-serif;
       letter-spacing: 0.03em;
       align-self: flex-start;
-      transition: opacity .15s;
+      transition: all .15s;
+      border-radius: 6px;
     }
-    .btn-submit:hover { opacity: 0.75; }
+    .btn-submit:hover { background: var(--accent-light); transform: translateY(-2px); box-shadow: 0 6px 12px rgba(59, 130, 246, 0.3); }
 
     /* FOOTER */
     footer {
@@ -351,7 +408,9 @@
       .cert-grid { grid-template-columns: 1fr; }
       .form-row { grid-template-columns: 1fr; }
       footer { flex-direction: column; gap: 8px; text-align: center; padding: 20px; }
-      .proj-row { grid-template-columns: 36px 1fr auto; gap: 12px; }
+      .proj-row { grid-template-columns: 1fr; gap: 0; }
+      .proj-content { order: 1; }
+      .proj-image { order: 2; height: 200px; }
     }
   </style>
 </head>
@@ -461,49 +520,87 @@
   <div class="proj-grid">
 
     <a href="https://yumio-frontend-7qtx.onrender.com/" target="_blank" class="proj-row">
-      <span class="proj-num">01</span>
-      <div>
-        <p class="proj-meta">4th Semester · PERN Stack · Full-Stack</p>
-        <h3 class="proj-title">Yumio — Food Delivery App</h3>
-        <p class="proj-desc">A food ordering platform where users can browse and order their favourite meals. Built with the PERN stack featuring live menus and recipes.</p>
-        <div class="proj-pills">
-          <span class="pill">React</span>
-          <span class="pill">Node.js</span>
-          <span class="pill">PostgreSQL</span>
-          <span class="pill">Express</span>
+      <div class="proj-content">
+        <div>
+          <span class="proj-num">01</span>
+          <p class="proj-meta">4th Semester · PERN Stack · Full-Stack</p>
+          <h3 class="proj-title">Yumio — Food Delivery App</h3>
+          <p class="proj-desc">A food ordering platform where users can browse and order their favourite meals. Built with the PERN stack featuring live menus and recipes.</p>
+          <div class="proj-pills">
+            <span class="pill">React</span>
+            <span class="pill">Node.js</span>
+            <span class="pill">PostgreSQL</span>
+            <span class="pill">Express</span>
+          </div>
         </div>
+        <span class="proj-arrow">↗</span>
       </div>
-      <span class="proj-arrow">↗</span>
+      <div class="proj-image">
+        <img src="./img/yumio.png" alt="Yumio Food Delivery App" />
+      </div>
     </a>
 
-    <a href="#" class="proj-row">
-      <span class="proj-num">02</span>
-      <div>
-        <p class="proj-meta">3rd Semester · Python · Academic</p>
-        <h3 class="proj-title">Chess Game — Pygame</h3>
-        <p class="proj-desc">A fully functional two-player chess game with valid move enforcement, check and checkmate detection, all built from scratch with OOP principles.</p>
-        <div class="proj-pills">
-          <span class="pill">Python</span>
-          <span class="pill">Pygame</span>
-          <span class="pill">OOP</span>
+    <a href="https://github.com/sunil0x/chess-game-pygame" target="_blank" class="proj-row">
+      <div class="proj-content">
+        <div>
+          <span class="proj-num">02</span>
+          <p class="proj-meta">3rd Semester · Python · Academic</p>
+          <h3 class="proj-title">Chess Game — Pygame</h3>
+          <p class="proj-desc">A fully functional two-player chess game with valid move enforcement, check and checkmate detection, all built from scratch with OOP principles.</p>
+          <div class="proj-pills">
+            <span class="pill">Python</span>
+            <span class="pill">Pygame</span>
+            <span class="pill">OOP</span>
+          </div>
         </div>
+        <span class="proj-arrow">↗</span>
       </div>
-      <span class="proj-arrow">↗</span>
+      <div class="proj-image">
+        <img src="./img/chess_pygame.png" alt="Chess Game Pygame" />
+      </div>
     </a>
 
-    <a href="#" class="proj-row">
-      <span class="proj-num">03</span>
-      <div>
-        <p class="proj-meta">4th Semester · Data Analysis · Advanced Python</p>
-        <h3 class="proj-title">NEPSE Market Analysis</h3>
-        <p class="proj-desc">Exploratory analysis of the Nepal Stock Exchange, surfacing patterns and insights from market data using Python's data science ecosystem.</p>
-        <div class="proj-pills">
-          <span class="pill">Pandas</span>
-          <span class="pill">Matplotlib</span>
-          <span class="pill">Jupyter</span>
+    <a href="https://github.com/sunil0x/nepse_dataanalysis" target="_blank" class="proj-row">
+      <div class="proj-content">
+        <div>
+          <span class="proj-num">03</span>
+          <p class="proj-meta">4th Semester · Data Analysis · Advanced Python</p>
+          <h3 class="proj-title">NEPSE Market Analysis</h3>
+          <p class="proj-desc">Exploratory analysis of the Nepal Stock Exchange, surfacing patterns and insights from market data using Python's data science ecosystem.</p>
+          <div class="proj-pills">
+            <span class="pill">Pandas</span>
+            <span class="pill">Matplotlib</span>
+            <span class="pill">Jupyter</span>
+          </div>
         </div>
+        <span class="proj-arrow">↗</span>
       </div>
-      <span class="proj-arrow">↗</span>
+      <div class="proj-image">
+        <img src="./img/nepse_analysis.png" alt="NEPSE Market Analysis" />
+      </div>
+    </a>
+
+    <a href="https://career-mentor-companion.vercel.app/login" target="_blank" class="proj-row">
+      <div class="proj-content">
+        <div>
+          <span class="proj-num">04</span>
+          <p class="proj-meta">6th Semester · Full-Stack · AI/ML</p>
+          <h3 class="proj-title">InterviewAI — Mock Interview Coach</h3>
+          <p class="proj-desc">AI powered mock interview coaching platform specially designed for data science domain. Features real-time voice analysis, feedback generation, and personalized recommendations for interview preparation.</p>
+          <div class="proj-pills">
+            <span class="pill">React</span>
+            <span class="pill">FastAPI</span>
+            <span class="pill">Python</span>
+            <span class="pill">Whisper</span>
+            <span class="pill">Librosa</span>
+            <span class="pill">Sentence Transformers</span>
+          </div>
+        </div>
+        <span class="proj-arrow">↗</span>
+      </div>
+      <div class="proj-image">
+        <img src="./img/interviewAI.png" alt="InterviewAI Mock Interview Coach" />
+      </div>
     </a>
 
   </div>
